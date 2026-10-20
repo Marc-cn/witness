@@ -1,0 +1,15 @@
+﻿name: SBOMit
+on:
+  push:
+    branches: [main, demo/**]
+  pull_request:
+
+jobs:
+  sbomit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: Marc-cn/sbomit-pipeline@v2
+        with:
+          command: "go build -trimpath ./..."
